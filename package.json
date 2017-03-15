@@ -1,0 +1,25 @@
+{
+  "name": "jstests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "employees.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nemsae/algos.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "jsson77",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nemsae/algos/issues"
+  },
+  "homepage": "https://github.com/Nemsae/algos#readme",
+  "dependencies": {
+    "co": "^4.6.0"
+  }
+}
