@@ -66,5 +66,8 @@ var numIslands = function(grid) {
 };
 
 let island = ['11000', '11000', '00100', '00011']
-
+// 11011
+// 10011
+// 11110
+// 00001
 numIslands(island)
