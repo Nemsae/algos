@@ -7,6 +7,8 @@ var numIslands = function(grid) {
     gridWid = grid.length
     islandCount = 0
     uniqueCount = 0
+    currLand = 1
+    landConflict = false
     console.log('len: ', gridLen, 'wid: ', gridWid)
 
     let dict = {}
@@ -26,6 +28,8 @@ var numIslands = function(grid) {
 
             let uniqueFlag = true
 
+            let conflictCheck = 0
+
             console.log('plot: ', plot, 'plotTag: ', plotTag, 'l: ', l, 'r: ', r, 't: ', t, 'b: ', b)
 
             if (plot === '1') {
@@ -37,37 +41,71 @@ var numIslands = function(grid) {
                 if (dict[lTag]) {
                   //  left plot exists, currPlot is no longer unique
                   uniqueFlag = false
+                  // if (dict[lTag] !== conflictCheck)
+
+                  currLand = dict[lTag]
                 } else {
                   //  left plot exists, currPlot is still unique
                 }
-
-                //  at the end of the side checks, if uniqueFlag is true than
-                //  that means that this plot of land is unique
-                dict[plotTag] = uniqueCount
-
-                if (l === 2345) {
-
-                } else if (!l && !r && !t && !b) {
-                    //  lone island check and raise count
-
-                    islandCount++
-
+                if (dict[rTag]) {
+                  //  right plot exists, currPlot is no longer unique
+                  uniqueFlag = false
+                  currLand = dict[rTag]
                 } else {
-
+                  //  right plot exists, currPlot is still unique
                 }
-                // islandCount++
+                if (dict[tTag]) {
+                  //  top plot exists, currPlot is no longer unique
+                  uniqueFlag = false
+                  currLand = dict[tTag]
+                } else {
+                  //  top plot exists, currPlot is still unique
+                }
+                if (dict[bTag]) {
+                  //  bot plot exists, currPlot is no longer unique
+                  uniqueFlag = false
+                  currLand = dict[bTag]
+                } else {
+                  //  bot plot exists, currPlot is still unique
+                }
+
+                //  After checking all sides, if uniqueFlag is false we mark the
+                //  the plot of land into our dict with the uniqueCount to signify
+                //  which body of land we are currently exploring
+                //  If uniqueFlag is true, we mark our dict with the same info,
+                //  but with the a different uniqueCount (incremented).
+
+                if (!uniqueFlag) {
+                  dict[plotTag] = currLand
+                } else {
+                  uniqueCount++
+                  dict[plotTag] = uniqueCount
+                }
             }
+
+            console.log('dict: ', dict);
         }
 
 
     }
 
+    //  Get all values from dict and return max
+    //  if landConflict, subtract from max and return it
+
     return islandCount
 };
 
 let island = ['11000', '11000', '00100', '00011']
+// 11000
+// 11000
+// 00100
+// 00011
+
+let island2 = ['11011', '10011', '11110', '00001']
 // 11011
 // 10011
 // 11110
 // 00001
-numIslands(island)
+
+// numIslands(island)
+numIslands(island2)
