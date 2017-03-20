@@ -3,13 +3,13 @@
  * @return {number}
  */
 var numIslands = function(grid) {
+    if (grid.length === 0) return 0
     gridLen = grid[0].length
     gridWid = grid.length
     islandCount = 0
     uniqueCount = 0
     currLand = 1
     landConflict = false
-    console.log('len: ', gridLen, 'wid: ', gridWid)
 
     let dict = {}
 
@@ -30,7 +30,7 @@ var numIslands = function(grid) {
 
             let conflictCheck = 0
 
-            console.log('plot: ', plot, 'plotTag: ', plotTag, 'l: ', l, 'r: ', r, 't: ', t, 'b: ', b)
+            // console.log('plot: ', plot, 'plotTag: ', plotTag, 'l: ', l, 'r: ', r, 't: ', t, 'b: ', b)
 
             if (plot === '1') {
                 console.log('LAND!')
@@ -83,7 +83,7 @@ var numIslands = function(grid) {
                 }
             }
 
-            console.log('dict: ', dict);
+            // console.log('dict: ', dict);
         }
 
 
@@ -91,6 +91,12 @@ var numIslands = function(grid) {
 
     //  Get all values from dict and return max
     //  if landConflict, subtract from max and return it
+    let max = 0
+
+    // console.log('dict: ', dict);
+    // console.log(Object.values(dict))
+    if (!uniqueCount) return 0
+    islandCount = Math.max(...Object.values(dict))
 
     return islandCount
 };
@@ -107,5 +113,11 @@ let island2 = ['11011', '10011', '11110', '00001']
 // 11110
 // 00001
 
+let island3 = ['111', '010', '111']
+// 111
+// 010
+// 111
+
 // numIslands(island)
-numIslands(island2)
+// numIslands(island2)
+numIslands(island3)
