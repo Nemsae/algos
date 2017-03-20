@@ -8,7 +8,7 @@ var numIslands = function(grid) {
     gridWid = grid.length
     islandCount = 0
     uniqueCount = 0
-    currLand = 1
+
     landConflict = false
 
     let dict = {}
@@ -28,7 +28,9 @@ var numIslands = function(grid) {
 
             let uniqueFlag = true
 
-            let conflictCheck = 0
+            // let conflictCheck = 0
+
+            let currLand = uniqueCount
 
             // console.log('plot: ', plot, 'plotTag: ', plotTag, 'l: ', l, 'r: ', r, 't: ', t, 'b: ', b)
 
@@ -83,7 +85,7 @@ var numIslands = function(grid) {
                 }
             }
 
-            // console.log('dict: ', dict);
+            console.log('dict: ', dict);
         }
 
 
@@ -93,10 +95,10 @@ var numIslands = function(grid) {
     //  if landConflict, subtract from max and return it
     let max = 0
 
-    // console.log('dict: ', dict);
-    // console.log(Object.values(dict))
     if (!uniqueCount) return 0
-    islandCount = Math.max(...Object.values(dict))
+    islandCount = Math.max(...Object.keys(dict).map(plot => dict[plot]))
+    console.log('islandCount: ', islandCount);
+    // islandCount = Math.max(...Object.values(dict))
 
     return islandCount
 };
