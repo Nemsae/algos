@@ -9,20 +9,20 @@ var hammingDistance = function(x, y) {
 
     let diffs = 0
     let max = Math.max(xLen, yLen)
-    // max === xLen ? (ans = xLen - yLen) : (ans = yLen - xLen)
-    // for (let i = max; i >= 0; i--) {
-    //
-    // }
-    // console.log('xS: ', xS, 'yS: ', yS)
 
     console.log('xS: ', xS, 'yS: ', yS, 'max: ', max)
-
 
     for (let i = 0; i < max; i++) {
       let xEle = xS[i]
       let yEle = yS[i]
 
-      if (xEle !== yEle) diffs++
+      xEle === undefined ? xEle = '0' : xEle = xEle
+      yEle === undefined ? yEle = '0' : yEle = yEle
+
+      if (xEle !== yEle) {
+        console.log('No Match!')
+        diffs++
+      }
 
       console.log('xEle: ', xEle);
       console.log('yEle: ', yEle);
@@ -32,5 +32,6 @@ var hammingDistance = function(x, y) {
     return diffs
 };
 
-let x1 = 93, y1 = 73
+let x1 = 1, y1 = 4
+// let x1 = 93, y1 = 73
 hammingDistance(x1, y1)
