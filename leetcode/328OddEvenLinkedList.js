@@ -10,27 +10,28 @@
  * @return {ListNode}
  */
 var oddEvenList = function(head) {
-    let iter = 1
-    console.log('head: ', head)
+    // console.log('head: ', head)
+    let odd = head
+    let even = head.next
 
-    while (head) {
-        console.log('val: ', head.val, 'iter: ', iter)
+    while (odd && odd.next) {
+        console.log('val: ', odd.val)
 
-        // if (iter === 1) {
+        odd.next = odd.next.next
 
-        // }
-
-        // if (iter%2) {
-        //     // console.log('iter: ', iter)
-
-        // } else {
-
-        // }
-        head.next = head.next.next
-
-        iter ++
-        head = head.next
+        // console.log('next: ', head.next)
+        if (odd.next)
+            odd = odd.next
     }
 
-    // console.log('head: ', head)
+    console.log('even: ', even)
+    console.log('odd: ', odd)
+    console.log('head: ', head)
+
+    // if (odd) {
+    //     odd.next = even
+    //     return head
+    // }
+    // return (odd.next = even)
+
 };
