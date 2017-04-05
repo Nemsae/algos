@@ -4,24 +4,31 @@
  * @return {number}
  */
 var hammingDistance = function(x, y) {
-    let xS = x.toString(2), xLen = xS.length
-    let yS = y.toString(2), yLen = yS.length
+    let xS = x.toString(2).split('').reverse().join(''), xLen = xS.length
+    let yS = y.toString(2).split('').reverse().join(''), yLen = yS.length
 
     let diffs = 0
     let max = Math.max(xLen, yLen)
-    max === xLen ? (ans = xLen - yLen) : (ans = yLen - xLen)
+    // max === xLen ? (ans = xLen - yLen) : (ans = yLen - xLen)
+    // for (let i = max; i >= 0; i--) {
+    //
+    // }
+    // console.log('xS: ', xS, 'yS: ', yS)
 
     console.log('xS: ', xS, 'yS: ', yS, 'max: ', max)
 
-    for (let i = xS.length; i >= 0; i--) {
-        xCount++
+
+    for (let i = 0; i < max; i++) {
+      let xEle = xS[i]
+      let yEle = yS[i]
+
+      if (xEle !== yEle) diffs++
+
+      console.log('xEle: ', xEle);
+      console.log('yEle: ', yEle);
     }
 
-    // for (let i = yS.length; i >= 0; i--) {
-    //     yCount++
-    // }
-
-
+    console.log('Hamming Distance is ', diffs)
     return diffs
 };
 
